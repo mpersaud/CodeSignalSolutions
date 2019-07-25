@@ -40,10 +40,42 @@ public class Solution{
 
     }
 
+    static List<List<Integer>> permutation(List<Integer> nums) {
+
+        if (nums.isEmpty()) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>> list = new ArrayList<>();
+        for (Integer i : nums) {
+            List<Integer> other = new ArrayList<>();
+            other.addAll(nums);
+            other.remove(i);
+            List<List<Integer>>o = permutation(other);
+            if(o.isEmpty()) {
+                other.add(0, i);
+                o.add(other);
+            }else{
+                for (List<Integer> l : o) {
+                    l.add(0, i);
+                }
+            }
+            list.addAll(o);
+        }
+        return list;
+    }
 
 
     public static void main(String[] args) {
 
+//        List<Integer> list = new ArrayList<>();
+//        list.add(1);
+//        list.add(2);
+//        list.add(3);
+//        list.add(4);
+//        List<List<Integer>>result =permutation(list);
+//        for(List<Integer> i : result){
+//            System.out.println(i);
+//        }
 
         String[][]dishes={{"Salad","Tomato","Cucumber","Salad","Sauce"},
                 {"Pizza","Tomato","Sausage","Sauce","Dough"},
@@ -58,6 +90,7 @@ public class Solution{
             }
             System.out.println();
         }
+
 
 
     }
