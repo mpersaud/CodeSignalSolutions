@@ -36,8 +36,6 @@ public class Solution{
 
         String [][] ans = tempList.toArray(new String[result.size()][]);
         return ans;
-
-
     }
 
     static List<List<Integer>> permutation(List<Integer> nums) {
